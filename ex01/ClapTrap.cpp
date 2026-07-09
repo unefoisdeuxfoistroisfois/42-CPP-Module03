@@ -22,9 +22,10 @@ ClapTrap::ClapTrap(std::string name){
 
 // Constructor copy
 ClapTrap::ClapTrap(const ClapTrap &src){ // Copie un claptrap deja existatn
+    this->_name = src._name;
+
     std::cout << "ClapTrap " << this->_name << " copy constructor called" << std::endl;
 
-    this->_name = src._name;
     this->_hitPoints = src._hitPoints;
     this->_energyPoints = src._energyPoints;
     this->_attackDamage = src._attackDamage;
@@ -57,20 +58,33 @@ void    ClapTrap::attack(const std::string &target){
     //(void)target;
 
     if (this->_energyPoints <= 0){
-        std::cout << this->_name << "n'a assez de point d'energie" << std::endl;
+        std::cout << this->_name << " has no more energy points to attack " << std::endl;
         return ;
     } else if (this->_hitPoints <= 0){
-        std::cout << this->_name << "n'a assez de point de vie" << std::endl;
+        std::cout << this->_name << " has no more hit points to attack " << std::endl;
         return ;
+    } else {
+        std::cout << this->_name << " attacks " << target << ", causing " << _attackDamage << " points of damage !" << std::endl;
+        this->_energyPoints --;
     }
-    std::cout << this->_name << " attacks " << target << ", causing " << _attackDamage << " points of damage !" << std::endl;
-    this->_energyPoints --;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount){
-    amount ++;
+    this->_hitPoints = this->_hitPoints - amount;
+
+    std::cout << "ClapTrap " << this->_name << " takes " << amount << " damage! Remaining HP: " << this->_hitPoints << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-    (void)amount;
+    if (this->_energyPoints <= 0){
+        std::cout << this->_name << " has no more energy points to be repaired " << std::endl;
+        return ;
+    } else if (this->_hitPoints <= 0){
+        std::cout << this->_name << " has no more hit points to be repaired " << std::endl;
+        return ;
+    } else {
+        this->_energyPoints --;
+        this->_hitPoints = this->_hitPoints + amount;
+        std::cout << this->_name << " is repaired by " << amount << " points ! Remaining HP : " << this->_hitPoints << std::endl;
+    }
 }
