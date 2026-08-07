@@ -2,9 +2,17 @@
 
 int main(){
 
-    ScavTrap objet("Bob");
-    objet.attack("cible");
-    objet.guardGate();
+    ScavTrap Bradley;
+    ScavTrap bob("Divina");
 
-    return (0);
+    bob.attack("une cible");
+
+    // Les fonctions héritées
+    bob.takeDamage(30);
+    bob.beRepaired(10);
+
+    bob.guardGate();
+
+    ScavTrap copy(bob);
+    Bradley = bob;
 }
