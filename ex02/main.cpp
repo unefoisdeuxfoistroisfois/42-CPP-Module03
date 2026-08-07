@@ -1,10 +1,13 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int main(){
+int main()
+{
+    FragTrap defaultFrag;
+    FragTrap bradley("Bradley");
+    bradley.attack("another target");
+    bradley.highFivesGuys();
+    FragTrap copy(bradley);
+    defaultFrag = bradley;
 
-    ScavTrap objet("Bob");
-    objet.attack("cible");
-    objet.guardGate();
-
-    return (0);
+    return 0;
 }
