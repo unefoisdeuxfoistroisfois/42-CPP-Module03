@@ -15,5 +15,5 @@ int main()
     FragTrap copy(bradley);
     defaultFrag = bradley;
 
-    return 0;
+    return (0);
 }

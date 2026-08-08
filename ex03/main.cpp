@@ -27,5 +27,5 @@ int main()
     defaultDiamond = copy;
     defaultDiamond.whoAmI();
 
-    return 0;
+    return (0);
 }
