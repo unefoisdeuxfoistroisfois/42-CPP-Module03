@@ -3,7 +3,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap{	// ScavTrap est un ClapTrap et il hérite de tout se qui est public et protected
+class ScavTrap : virtual public ClapTrap{	// ScavTrap est un ClapTrap et il hérite de tout se qui est public et protected
 	public:
 		ScavTrap();
 		ScavTrap(std::string name);
